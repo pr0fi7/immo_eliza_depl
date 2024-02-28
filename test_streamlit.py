@@ -235,7 +235,7 @@ def page_three():
     #Button to trigger prediction
     if st.button('Predict Price'):
         # Prepare input data as JSON
-        input_data = {
+        st.session_state.input_data = {
     "nbr_frontages": st.session_state.nbr_frontages,
     "equipped_kitchen": equipped_kitchen,
     "nbr_bedrooms": st.session_state.nbr_bedrooms,
@@ -260,7 +260,7 @@ def page_three():
 
     # Make POST request to FastAPI endpoint
     try:
-        response = requests.post(FASTAPI_URL, json=input_data)
+        response = requests.post(FASTAPI_URL, json=st.session_state.input_data)
         predicted_price = response.json()[0]
 
         progress_bar = st.progress(0)
