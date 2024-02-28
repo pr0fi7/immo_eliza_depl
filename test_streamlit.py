@@ -7,7 +7,7 @@ from streamlit_folium import folium_static, st_folium
 from folium.plugins import Draw
 from folium import plugins
 
-
+input_data = {}
 #Define the URL of the FastAPI endpoint
 FASTAPI_URL = 'https://immo-eliza-deployment-1-mn9i.onrender.com/predict'
 
