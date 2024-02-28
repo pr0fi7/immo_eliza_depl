@@ -9,7 +9,7 @@ from folium import plugins
 
 
 #Define the URL of the FastAPI endpoint
-FASTAPI_URL = 'https://immo-eliza-depl.onrender.com/predict'
+FASTAPI_URL = 'https://immo-eliza-deployment-1-mn9i.onrender.com/predict'
 
 loc_coordinates = {
     "Brussels": (50.8503, 4.3517),
