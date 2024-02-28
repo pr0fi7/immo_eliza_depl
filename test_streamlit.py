@@ -88,7 +88,6 @@ st.image("https://i.ibb.co/d2335Cq/logo1.png", width=700)
 
 #Input features for price prediction
 def page_one():
-    st.session_state.input_data = {}
     st.title('Page One')
     # Input fields or widgets for page one
     st.header("Describe your property for us, and we'll give you a prediction!")
@@ -236,7 +235,7 @@ def page_three():
     #Button to trigger prediction
     if st.button('Predict Price'):
         # Prepare input data as JSON
-        st.session_state.input_data = {
+        input_data = {
     "nbr_frontages": st.session_state.nbr_frontages,
     "equipped_kitchen": equipped_kitchen,
     "nbr_bedrooms": st.session_state.nbr_bedrooms,
@@ -261,7 +260,7 @@ def page_three():
 
     # Make POST request to FastAPI endpoint
     try:
-        response = requests.post(FASTAPI_URL, json=st.session_state.input_data)
+        response = requests.post(FASTAPI_URL, json=input_data)
         predicted_price = response.json()[0]
 
         progress_bar = st.progress(0)
