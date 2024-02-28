@@ -97,6 +97,9 @@ def page_one():
         # User selects the region
         region = st.selectbox("Pick region", list(region_province_mapping.keys()))
     
+        # Store region in session state
+        st.session_state.region = region
+    
         # Based on the selected region, dynamically update the options for the province
         provinces_for_region = region_province_mapping.get(region, [])
         province = st.selectbox('Province', provinces_for_region)
