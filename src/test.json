@@ -1,0 +1,23 @@
+{
+  "data": {
+  "nbr_frontages": 2.0,
+  "nbr_bedrooms": 2.0,
+  "latitude": 51.2171725,
+  "longitude": 4.3799821,
+  "total_area_sqm": 100.0,
+  "surface_land_sqm": null,
+  "terrace_sqm": 5.0,
+  "garden_sqm": 0.0,
+  "province": "Antwerp",
+  "heating_type": "GAS",
+  "state_building": "MISSING",
+  "property_type": "APARTMENT",
+  "epc": "C",
+  "locality": "Antwerp",
+  "subproperty_type": "APARTMENT",
+  "region": "Flanders",
+  "fl_terrace": 1,
+  "fl_garden": 0,
+  "fl_swimming_pool": 0
+  }
+}
