@@ -88,6 +88,7 @@ st.image("https://i.ibb.co/d2335Cq/logo1.png", width=700)
 
 #Input features for price prediction
 def page_one():
+    st.session_state.input_data = {}
     st.title('Page One')
     # Input fields or widgets for page one
     st.header("Describe your property for us, and we'll give you a prediction!")
