@@ -7,7 +7,13 @@ from streamlit_folium import folium_static, st_folium
 from folium.plugins import Draw
 from folium import plugins
 
-input_data = {}
+# Initialize session state
+if 'input_data' not in st.session_state:
+    st.session_state.input_data = {}
+if 'page' not in st.session_state:
+    st.session_state.page = 'page_one'
+
+
 #Define the URL of the FastAPI endpoint
 FASTAPI_URL = 'https://immo-eliza-deployment-1-mn9i.onrender.com/predict'
 
@@ -80,20 +86,17 @@ province_locality_mapping = {
 }
 st.title('Welcome to')
 st.image("https://i.ibb.co/d2335Cq/logo1.png", width=700)
-#Streamlit App Title
-
-
-#Image
-#st.image('streamlit', caption='Streamlit Logo', use_column_width=True)
 
 #Input features for price prediction
 def page_one():
-    st.title('Page One')
     # Input fields or widgets for page one
     st.header("Describe your property for us, and we'll give you a prediction!")
     st.subheader('Naviagte through the menus for the location the use the marker on the map for best accuracy')
     col1, col2 = st.columns([1, 2])
     with col1:
+        st.write("")
+        st.write("")
+        st.write("")
         st.write("")
         st.write("")
         st.write("")
@@ -123,7 +126,9 @@ def page_one():
         #belgium_coords = [50.8503, 4.3517]  # Latitude and Longitude for Brussels, Belgium
         m = folium.Map(location=[latitude,longitude], zoom_start=12)
         Draw(export=True).add_to(m)
-        st_data = st_folium(m, width=800)
+        # st_folium(m, height=300) 
+        st_data = st_folium(m, width=800, height=300)
+
         if st_data is not None and st_data.get("last_active_drawing") is not None:
         # Accessing coordinates from the last_active_drawing
             coordinates = st_data["last_active_drawing"].get("geometry", {}).get("coordinates")
@@ -137,12 +142,12 @@ def page_one():
             st.warning("Please select the marker and click on the map to retrieve coordinates")
 
     if st.button('Next'):
-        st.session_state.page = 'page_two'
         st.session_state.province = province
         st.session_state.latitude = latitude
         st.session_state.longitude = longitude
         st.session_state.locality = locality
-
+        st.session_state.page = 'page_two'
+        st.experimental_rerun()
 
 def page_two():
     nbr_bedrooms = st.number_input('Number of Bedrooms:', min_value=0, max_value=10, value=1)   
@@ -156,10 +161,6 @@ def page_two():
     
     # Additional input fields or widgets for page two
     if st.button('Previous'):
-        st.session_state.page = 'page_one'
-    if st.button('Next'):
-        # Store inputs from page two or do further processing
-        st.session_state.page = 'page_three'
         st.session_state.nbr_bedrooms = nbr_bedrooms
         st.session_state.nbr_frontages = nbr_frontages
         st.session_state.total_area_sqm = total_area_sqm
@@ -168,7 +169,20 @@ def page_two():
         st.session_state.fl_garden = fl_garden
         st.session_state.garden_sqm = garden_sqm
         st.session_state.terrace_sqm = terrace_sqm
-
+        st.session_state.page = 'page_one'
+        st.experimental_rerun()
+    if st.button('Next'):
+        # Store inputs from page two or do further processing
+        st.session_state.nbr_bedrooms = nbr_bedrooms
+        st.session_state.nbr_frontages = nbr_frontages
+        st.session_state.total_area_sqm = total_area_sqm
+        st.session_state.surface_land_sqm = surface_land_sqm
+        st.session_state.fl_terrace = fl_terrace
+        st.session_state.fl_garden = fl_garden
+        st.session_state.garden_sqm = garden_sqm
+        st.session_state.terrace_sqm = terrace_sqm
+        st.session_state.page = 'page_three'
+        st.experimental_rerun()
         
 # Call to render Folium map in Streamlit
 def page_three():
@@ -238,6 +252,7 @@ def page_three():
 
     if st.button('Previous'):
         st.session_state.page = 'page_two'
+        st.experimental_rerun
     #Button to trigger prediction
     if st.button('Predict Price'):
         # Prepare input data as JSON
@@ -279,9 +294,6 @@ def page_three():
             st.error(f'An error occurred: {str(e)}')
 
 
-# Initialize session state
-if 'page' not in st.session_state:
-    st.session_state.page = 'page_one'
 
 # Render current page based on session state
 if st.session_state.page == 'page_one':
