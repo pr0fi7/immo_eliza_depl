@@ -94,6 +94,9 @@ def page_one():
     st.subheader('Naviagte through the menus for the location the use the marker on the map for best accuracy')
     col1, col2 = st.columns([1, 2])
     with col1:
+        st.write("")
+        st.write("")
+        st.write("")
         # User selects the region
         region = st.selectbox("Pick region", list(region_province_mapping.keys()))
     
