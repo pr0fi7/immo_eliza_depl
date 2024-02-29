@@ -7,6 +7,7 @@ from streamlit_folium import folium_static, st_folium
 from folium.plugins import Draw
 from folium import plugins
 
+
 # Initialize session state
 if 'input_data' not in st.session_state:
     st.session_state.input_data = {}
@@ -150,6 +151,7 @@ def page_one():
         st.experimental_rerun()
 
 def page_two():
+
     nbr_bedrooms = st.number_input('Number of Bedrooms:', min_value=0, max_value=10, value=1)   
     nbr_frontages = st.number_input('Number of Frontages:', min_value=0, max_value=10, value=1)
     total_area_sqm = st.number_input('Living Area (sqm):', min_value=0.0, step=10.0)
@@ -171,6 +173,7 @@ def page_two():
         st.session_state.terrace_sqm = terrace_sqm
         st.session_state.page = 'page_one'
         st.experimental_rerun()
+
     if st.button('Next'):
         # Store inputs from page two or do further processing
         st.session_state.nbr_bedrooms = nbr_bedrooms
@@ -183,6 +186,7 @@ def page_two():
         st.session_state.terrace_sqm = terrace_sqm
         st.session_state.page = 'page_three'
         st.experimental_rerun()
+ 
         
 # Call to render Folium map in Streamlit
 def page_three():
@@ -252,7 +256,8 @@ def page_three():
 
     if st.button('Previous'):
         st.session_state.page = 'page_two'
-        st.experimental_rerun
+        st.experimental_rerun()
+    
     #Button to trigger prediction
     if st.button('Predict Price'):
         # Prepare input data as JSON
