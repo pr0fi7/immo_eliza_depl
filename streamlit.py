@@ -241,15 +241,15 @@ if st.button('Predict Price'):
 
 
     # Make POST request to FastAPI endpoint
-    try:
-        response = requests.post(FASTAPI_URL, json=input_data)
-        predicted_price = response.json()[0]
-
-        progress_bar = st.progress(0)
-        for perc_completed in range(100):
-            time.sleep(0.05)  
-            progress_bar.progress(perc_completed + 1)
-
-        st.success(f'Predicted Price: €{predicted_price:.2f}')
-    except Exception as e:
-        st.error(f'An error occurred: {str(e)}')
+        try:
+            response = requests.post(FASTAPI_URL, json=input_data)
+            predicted_price = response.json()[0]
+    
+            progress_bar = st.progress(0)
+            for perc_completed in range(100):
+                time.sleep(0.05)  
+                progress_bar.progress(perc_completed + 1)
+    
+            st.success(f'Predicted Price: €{predicted_price:.2f}')
+        except Exception as e:
+            st.error(f'An error occurred: {str(e)}')
