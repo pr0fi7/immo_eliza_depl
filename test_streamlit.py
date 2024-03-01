@@ -85,8 +85,11 @@ province_locality_mapping = {
     "Namur": ["Namur", "Dinant", "Philippeville"],
     "MISSING": ["MISSING"]
 }
-st.title('Welcome to')
-st.image("https://i.ibb.co/d2335Cq/logo1.png", width=700)
+col1, col2 = st.columns([1, 2])
+with col1:
+    st.title('Welcome to')
+with col2:
+    st.image("/Users/markshevchenkopu/Desktop/icons/modern-house.png", width=70)
 
 #Input features for price prediction
 def page_one():
@@ -184,6 +187,7 @@ def page_two():
         st.session_state.fl_garden = fl_garden
         st.session_state.garden_sqm = garden_sqm
         st.session_state.terrace_sqm = terrace_sqm
+    
         st.session_state.page = 'page_three'
         st.experimental_rerun()
  
@@ -286,6 +290,7 @@ def page_three():
 
     # Make POST request to FastAPI endpoint
         try:
+            st.write(input_data)
             response = requests.post(FASTAPI_URL, json=input_data)
             predicted_price = response.json()[0]
     
