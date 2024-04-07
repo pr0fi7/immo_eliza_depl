@@ -16,7 +16,7 @@ if 'page' not in st.session_state:
 
 
 #Define the URL of the FastAPI endpoint
-FASTAPI_URL = 'https://immo-eliza-deployment-1-mn9i.onrender.com/predict'
+FASTAPI_URL = 'https://immo-eliza-deployment-1-mn9i.onrender.com'
 
 loc_coordinates = {
     "Brussels": (50.8503, 4.3517),
@@ -88,8 +88,8 @@ province_locality_mapping = {
 col1, col2 = st.columns([1, 2])
 with col1:
     st.title('Welcome to')
-with col2:
-    st.image("/Users/markshevchenkopu/Desktop/icons/modern-house.png", width=70)
+# with col2:
+#     st.image("/Users/markshevchenkopu/Desktop/icons/modern-house.png", width=70)
 
 #Input features for price prediction
 def page_one():
