@@ -178,20 +178,19 @@ Q3_province = {
     "West Flanders": 4775.43}
 
 #Input features for price prediction
-# html_content = """
-# <div class="immo-eliza-container">
-#     <div class = "title_div">
-#         <h1 class="title">Welcome to</h1>
-#     </div>
-#     <h1 class = "immo_name" >IMMO-ELIZA</h1>
-#     <img class ="our_img" src="https://e7.pngegg.com/pngimages/211/970/png-clipart-computer-icons-house-building-house-angle-building-thumbnail.png" alt="pngegg" border="0" width="75" height="50">
-# </div>
-# """
+html_content = """
+<div class="immo-eliza-container">
+    <div class = "title_div">
+        <h1 class="title">Welcome to</h1>
+    </div>
+    <h1 class = "immo_name" >IMMO-ELIZA</h1>
+</div>
+"""
 
-# with open("style.css") as css:
-#     st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
+with open("style.css") as css:
+    st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
 
-# st.markdown(html_content, unsafe_allow_html=True)
+st.markdown(html_content, unsafe_allow_html=True)
 
 
 def page_one():
