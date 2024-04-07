@@ -1,0 +1,17 @@
+.immo-eliza-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute content to the edges /
+}
+
+.title_div {
+    margin-right: auto; / Push "Welcome to" to the left */
+}
+
+.immo_name {
+    margin-right: -20px;
+}
+.our_img {
+    margin-top: 10px;
+    margin-left: -10px;
+}
