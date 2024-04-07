@@ -184,7 +184,7 @@ html_content = """
         <h1 class="title">Welcome to</h1>
     </div>
     <h1 class = "immo_name" >IMMO-ELIZA</h1>
-    <img class ="our_img" src="https://i.pinimg.com/736x/b3/cc/d5/b3ccd57b054a73af1a0d281265b54ec8.jpg" alt="pngegg" border="0" width="75" height="50">
+    <img class ="our_img" src="https://e7.pngegg.com/pngimages/211/970/png-clipart-computer-icons-house-building-house-angle-building-thumbnail.png" alt="pngegg" border="0" width="75" height="50">
 </div>
 """
 
